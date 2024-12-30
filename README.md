@@ -2,6 +2,102 @@
 
 A Discord bot for checking After School Club NFT rarities and traits. This bot helps you check the rarity rank, tier, and traits of any ASC NFT instantly in your Discord server.
 
+## Step by Step Setup Guide
+
+### 1. Discord Bot Setup
+1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
+2. Click "New Application" and give it a name
+3. Go to the "Bot" section and click "Add Bot"
+4. Click "Reset Token" and copy your bot token
+5. Under "Privileged Gateway Intents", enable:
+   - MESSAGE CONTENT INTENT
+   - SERVER MEMBERS INTENT
+6. Go to OAuth2 > URL Generator
+   - Select "bot" and "applications.commands" under SCOPES
+   - Select these permissions:
+     - Read Messages/View Channels
+     - Send Messages
+     - Use Slash Commands
+     - Embed Links
+7. Copy the generated URL and use it to invite the bot to your server
+
+### 2. System Requirements
+1. Install [Node.js](https://nodejs.org/) (version 16.x or higher)
+2. Install Git from [here](https://git-scm.com/downloads)
+
+### 3. Bot Installation
+1. Open terminal/command prompt
+2. Clone the repository:
+```bash
+git clone https://github.com/Feraxion/ASCRarityBot.git
+cd ASCRarityBot
+```
+
+3. Install dependencies:
+```bash
+npm install
+```
+
+4. Create `.env` file:
+```bash
+# On Windows
+copy .env.example .env
+
+# On Mac/Linux
+cp .env.example .env
+```
+
+5. Edit `.env` file and paste your bot token:
+```env
+DISCORD_TOKEN=your_bot_token_here
+```
+
+### 4. Running the Bot
+
+#### For Testing/Development:
+```bash
+npm start
+```
+
+#### For Production (Recommended):
+1. Install PM2 globally:
+```bash
+npm install -g pm2
+```
+
+2. Start the bot:
+```bash
+npm run pm2:start
+```
+
+3. Other useful PM2 commands:
+```bash
+# Monitor bot performance
+npm run pm2:monit
+
+# View logs
+npm run pm2:logs
+
+# Restart bot
+npm run pm2:restart
+
+# Stop bot
+npm run pm2:stop
+```
+
+### 5. Server Configuration
+1. Make sure the bot is in your server
+2. Go to the channel where you want the bot to work
+3. Type `/setnftchannel` (requires admin permissions)
+4. Try the bot with `!nft 1` or `/nft 1`
+
+### 6. Troubleshooting
+- If commands don't work, make sure the bot has correct permissions
+- If slash commands don't appear, reinvite the bot using the URL from step 1
+- Check the console/logs for any error messages
+- Make sure your `.env` file has the correct token
+- Ensure Node.js version is 16.x or higher
+
 ## Features
 
 - Look up NFT by token ID (1-10000)

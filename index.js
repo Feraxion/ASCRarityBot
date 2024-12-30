@@ -150,7 +150,6 @@ async function handleNFTLookup(tokenId, reply, userId) {
 
         // Organize traits in a specific order
         const traitOrder = [
-            'Background',
             'Exchange Student (1/1)',
             'Schooler',
             'Eyes',
@@ -172,7 +171,8 @@ async function handleNFTLookup(tokenId, reply, userId) {
             'Skelly Mouth',
             'Items',
             'Accessoires',
-            'Uniform'
+            'Uniform',
+            'Background'
         ];
 
         // First, collect all traits
