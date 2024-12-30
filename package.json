@@ -1,0 +1,20 @@
+{
+  "name": "asc-rarity-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for displaying ASC NFT rarities",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start.js",
+    "dev": "node start.js",
+    "pm2:start": "pm2 start start.js --name asc-rarity-bot",
+    "pm2:stop": "pm2 stop asc-rarity-bot",
+    "pm2:restart": "pm2 restart asc-rarity-bot",
+    "pm2:logs": "pm2 logs asc-rarity-bot",
+    "pm2:monit": "pm2 monit"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "pm2": "^5.3.0"
+  }
+} 
