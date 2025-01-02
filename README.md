@@ -89,7 +89,7 @@ npm run pm2:stop
 1. Make sure the bot is in your server
 2. Go to the channel where you want the bot to work
 3. Type `/setnftchannel` (requires admin permissions)
-4. Try the bot with `!nft 1` or `/nft 1`
+4. Try the bot with `!asc 1` or `/asc 1`
 
 ### 6. Troubleshooting
 - If commands don't work, make sure the bot has correct permissions
@@ -178,15 +178,15 @@ npm run pm2:stop
 
 ## Discord Commands
 
-- `!nft <tokenId>` - Look up an NFT by its token ID
-- `/nft <tokenId>` - Slash command version
+- `!asc <tokenId>` - Look up an NFT by its token ID
+- `/asc <tokenId>` - Slash command version
 - `/setnftchannel` - (Admin only) Set the current channel for bot commands
 
 ## Server Setup
 
 1. Invite the bot to your server
 2. Use `/setnftchannel` in the channel where you want the bot to work
-3. Start using `!nft` or `/nft` commands
+3. Start using `!asc` or `/asc` commands
 
 ## Credits
 

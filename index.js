@@ -227,7 +227,7 @@ async function handleNFTLookup(tokenId, reply, userId) {
 // Register Slash Commands
 const commands = [
     new SlashCommandBuilder()
-        .setName('nft')
+        .setName('asc')
         .setDescription('✨ Look up a cute ASC NFT by token ID ✨')
         .addIntegerOption(option =>
             option.setName('tokenid')
@@ -261,7 +261,7 @@ client.once('ready', async () => {
     }
 });
 
-// Handle traditional !nft command
+// Handle traditional !asc command
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
     
@@ -274,12 +274,12 @@ client.on('messageCreate', async message => {
         return; // Silently ignore if channel isn't allowed
     }
     
-    if (message.content.toLowerCase().startsWith('!nft')) {
-        console.log('🎯 NFT command detected');
+    if (message.content.toLowerCase().startsWith('!asc')) {
+        console.log('🎯 ASC command detected');
         const args = message.content.split(' ');
         
         if (args.length !== 2) {
-            return message.reply('💝 Please use the format: `!nft <tokenId>` to look up your NFT! 💝');
+            return message.reply('💝 Please use the format: `!asc <tokenId>` to look up your NFT! 💝');
         }
         
         const tokenId = parseInt(args[1]);
@@ -296,7 +296,7 @@ client.on('messageCreate', async message => {
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === 'nft') {
+    if (interaction.commandName === 'asc') {
         // Check if channel is allowed
         if (!isAllowedChannel(interaction.channelId, interaction.guildId)) {
             return interaction.reply({ 
