@@ -85,32 +85,32 @@ async function handleNFTLookup(tokenId, reply, userId) {
         
         // Get rarity tier based on rank
         let rarityTier = '';
-        let rarityColor = '#808080'; // default gray color
+        let rarityColor = '#6B7280'; // default gray color (gray-500)
 
         if (nft.rank <= 33) {
             rarityTier = '🔱 ASCENDED 🔱';
-            rarityColor = '#FFFFFF'; // White
+            rarityColor = '#EF4444'; // red-500
         } else if (nft.rank <= 172) {
             rarityTier = '🌌 MYTHIC 🌌';
-            rarityColor = '#800080'; // Purple
-        } else if (nft.rank <= 500) {
+            rarityColor = '#A855F7'; // purple-500
+        } else if (nft.rank <= 507) {
             rarityTier = '🌟 LEGENDARY 🌟';
-            rarityColor = '#FFD700'; // Gold
+            rarityColor = '#EAB308'; // yellow-500
         } else if (nft.rank <= 1500) {
             rarityTier = '✨ EPIC ✨';
-            rarityColor = '#0000FF'; // Blue
+            rarityColor = '#3B82F6'; // blue-500
         } else if (nft.rank <= 3500) {
             rarityTier = '💫 RARE 💫';
-            rarityColor = '#008000'; // Green
+            rarityColor = '#22C55E'; // green-500
         } else if (nft.rank <= 6000) {
             rarityTier = '⭐ UNCOMMON ⭐';
-            rarityColor = '#00008B'; // Darker Blue
+            rarityColor = '#6366F1'; // indigo-500
         } else if (nft.rank <= 10000) {
             rarityTier = '🎈 COMMON 🎈';
-            rarityColor = '#808080'; // Gray
+            rarityColor = '#6B7280'; // gray-500
         } else {
             rarityTier = '❓ UNKNOWN ❓';
-            rarityColor = '#808080'; // Gray
+            rarityColor = '#6B7280'; // gray-500
         }
 
         // Create embed
