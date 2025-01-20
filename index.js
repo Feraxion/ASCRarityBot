@@ -25,6 +25,8 @@ const nftCache = new Map();
 // Rate limiting map
 const cooldowns = new Map();
 const COOLDOWN_DURATION = 3000; // 3 seconds cooldown
+// Rank to token mapping
+const rankToTokenMap = new Map();
 
 // Cache for allowed channels
 const allowedChannels = new Map();
@@ -41,6 +43,10 @@ console.log('Loading NFT data...');
 const nftData = JSON.parse(fs.readFileSync('NFTRarities.json', 'utf8'));
 // Create an index for faster lookups
 const nftIndex = new Map(nftData.map(nft => [nft.tokenId, nft]));
+// Create rank to token mapping
+nftData.forEach(nft => {
+    rankToTokenMap.set(nft.rank, nft.tokenId);
+});
 console.log('NFT data loaded and indexed.');
 
 // Function to handle NFT lookup and response
@@ -267,7 +273,7 @@ client.once('ready', async () => {
     }
 });
 
-// Handle traditional !asc command
+// Handle traditional commands
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
     
@@ -292,6 +298,26 @@ client.on('messageCreate', async message => {
         
         if (isNaN(tokenId) || tokenId < 1 || tokenId > 10000) {
             return message.reply('🎈 Oops! Please provide a valid token ID between 1 and 10000! 🎈');
+        }
+
+        await handleNFTLookup(tokenId, (response) => message.reply(response), message.author.id);
+    } else if (message.content.toLowerCase().startsWith('!rank')) {
+        console.log('🎯 Rank lookup command detected');
+        const args = message.content.split(' ');
+        
+        if (args.length !== 2) {
+            return message.reply('💝 Please use the format: `!rank <rank>` (e.g., `!rank 1`) 💝');
+        }
+        
+        const rank = parseInt(args[1]);
+        
+        if (isNaN(rank) || rank < 1 || rank > 10000) {
+            return message.reply('🎈 Please provide a valid rank between 1 and 10000! 🎈');
+        }
+
+        const tokenId = rankToTokenMap.get(rank);
+        if (!tokenId) {
+            return message.reply(`❌ No NFT found with rank ${rank}`);
         }
 
         await handleNFTLookup(tokenId, (response) => message.reply(response), message.author.id);
